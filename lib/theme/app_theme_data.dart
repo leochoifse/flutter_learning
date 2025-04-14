@@ -13,7 +13,9 @@ class AppThemeData {
   static ThemeData get darkTheme {
     //bottomSheet
     return ThemeData.dark().copyWith(
-      backgroundColor: Colors.transparent,
+      bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: Colors.transparent,
+      ),
     );
   }
 }

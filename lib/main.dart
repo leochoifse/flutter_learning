@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'pages/landing_page.dart';
 import 'HomePage.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
-import 'CounterModel.dart';
 import 'appState.dart';
-import "theme_model.dart";
 import 'theme/AppTheme.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import './theme/app_theme_data.dart';
+import './database/database_modal.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,12 +13,15 @@ void main() async {
   await appState.initializePersistedState();
   //await AppTheme.initialize();
 
+  //Version
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
   print(packageInfo.appName);
   print(packageInfo.packageName);
   print(packageInfo.version);
   print(packageInfo.buildNumber);
   appState.appVerion = "${packageInfo.version}+${packageInfo.buildNumber}";
+
+  //DatabaseModal.dbInit();
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,

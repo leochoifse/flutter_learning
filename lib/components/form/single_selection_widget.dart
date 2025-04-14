@@ -109,16 +109,16 @@ class _SingleSelectionWidgetState extends State<SingleSelectionWidget> {
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: DropdownSearch<OptionObj>(
-            dropdownDecoratorProps: const DropDownDecoratorProps(
-                dropdownSearchDecoration: InputDecoration(border: InputBorder.none, contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12))),
+            decoratorProps: const DropDownDecoratorProps(
+                decoration: InputDecoration(border: InputBorder.none, contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12))),
             popupProps: PopupProps.menu(
               showSelectedItems: true,
-              itemBuilder: (context, item, isSelected) {
+              itemBuilder: (BuildContext context, OptionObj item, bool isSelected, bool hasFocus) {
                 return itemListBuilder(context, item, isSelected);
               },
             ),
             enabled: !isReadOnly,
-            items: options,
+            items: (filter, infiniteScrollProps) => options,
             itemAsString: (OptionObj u) => u.label,
             compareFn: (OptionObj obj1, OptionObj obj2) {
               return obj1.value == obj2.value;
@@ -162,16 +162,16 @@ class _SingleSelectionWidgetState extends State<SingleSelectionWidget> {
                   borderRadius: BorderRadius.circular(12.0),
                 ),
                 child: DropdownSearch<OptionObj>(
-                  dropdownDecoratorProps: const DropDownDecoratorProps(
-                      dropdownSearchDecoration: InputDecoration(border: InputBorder.none, contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12))),
+                  decoratorProps: const DropDownDecoratorProps(
+                      decoration: InputDecoration(border: InputBorder.none, contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12))),
                   popupProps: PopupProps.menu(
                     showSelectedItems: true,
-                    itemBuilder: (context, item, isSelected) {
+                    itemBuilder: (BuildContext context, OptionObj item, bool isSelected, bool hasFocus) {
                       return itemListBuilder(context, item, isSelected);
                     },
                   ),
                   enabled: !isReadOnly,
-                  items: options,
+                  items: (filter, infiniteScrollProps) => options,
                   itemAsString: (OptionObj u) => u.label,
                   compareFn: (OptionObj obj1, OptionObj obj2) {
                     return obj1.value == obj2.value;

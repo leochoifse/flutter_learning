@@ -65,7 +65,7 @@ class _TimeLineState extends State<TimeLine> {
     final size1 = renderBox1.size;
     final size2 = renderBox2.size;
     setState(() {
-      containerHeight = size1.height + size2.height + 35;
+      containerHeight = size1.height + size2.height + 50;
       containerWidth = renderContainer.size.width;
     });
   }

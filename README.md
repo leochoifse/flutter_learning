@@ -1,4 +1,4 @@
-# flutter_learning
+# learn_flutter
 
 A new Flutter project.
 

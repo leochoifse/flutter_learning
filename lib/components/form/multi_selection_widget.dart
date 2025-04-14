@@ -75,8 +75,8 @@ class _MultiSelectionWidgetState extends State<MultiSelectionWidget> {
   Widget dropdwonSearchMultiSelectionWidget() {
     return DropdownSearch<OptionObj>.multiSelection(
       key: dropdownKey,
-      dropdownDecoratorProps: const DropDownDecoratorProps(
-        dropdownSearchDecoration: InputDecoration(
+      decoratorProps: const DropDownDecoratorProps(
+        decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.fromLTRB(5, 5, 0, 5),
         ),
@@ -96,7 +96,7 @@ class _MultiSelectionWidgetState extends State<MultiSelectionWidget> {
           ),
           style: TextStyle(fontSize: answerFontSize), // Set font size to 20
         ),
-        itemBuilder: (context, item, isSelected) {
+        itemBuilder: (BuildContext context, OptionObj item, bool isSelected, bool hasFocus) {
           return ListTile(
             title: Text(
               item.label,
@@ -106,10 +106,10 @@ class _MultiSelectionWidgetState extends State<MultiSelectionWidget> {
                 color: Colors.black,
               ),
             ),
-            //trailing: isSelected ? Icon(Icons.check) : null,
+            // trailing: isSelected ? Icon(Icons.check) : null,
           );
         },
-        validationWidgetBuilder: (ctx, selectedItems) {
+        validationBuilder: (ctx, selectedItems) {
           return GestureDetector(
             onTap: () {
               dropdownKey.currentState?.popupOnValidate();
@@ -133,7 +133,7 @@ class _MultiSelectionWidgetState extends State<MultiSelectionWidget> {
         ),
       ),
       enabled: !isReadOnly,
-      items: options,
+      items: (filter, infiniteScrollProps) => options,
       itemAsString: (OptionObj u) => u.label,
       compareFn: (OptionObj obj1, OptionObj obj2) {
         return obj1.value == obj2.value;

@@ -31,6 +31,10 @@ class _MenuPageState extends State<MenuPage> {
       "content": ApplicationFormPage(),
     },
     {
+      "name": "Database",
+      "content": DatabasePage(),
+    },
+    {
       "name": "Setting",
       "content": ApplicationFormPage(),
     },
